@@ -1,69 +1,145 @@
-# Edunee
-Proyecto: Sistema de Detección de Necesidades Educativas Especiales
+# EDUNEEDAL
+Proyecto: Sistema Inteligente de Detección Temprana de Daltonismo en Entornos Educativos
+TÍTULO DEL PROYECTO
 
-1. TÍTULO DEL PROYECTO
-Nombre Técnico:
-EDUNEE - Sistema Inteligente de Detección Temprana de Necesidades Educativas Especiales
-Área de Aplicación:
-Educación Inclusiva y Análisis Predictivo con Machine Learning
+Nombre Técnico: EDUNEEDAL - Sistema Inteligente de Detección Temprana de Daltonismo
+
+Área de Aplicación: Educación Inclusiva y Tecnología de Apoyo Visual
+
 Clasificación Técnica:
 
-Línea Principal: Matemática Aplicada (Machine Learning, Análisis Estadístico)
+Línea Principal: Matemática Aplicada (Machine Learning, Análisis de Patrones Visuales)
+
 Líneas Secundarias:
 
-Análisis de Datos Educativos
 Inteligencia Artificial Aplicada
+
+Análisis de Datos Educativos
+
 Sistemas de Apoyo a la Decisión
 
+Accesibilidad Digital
 
+DEFINICIÓN DEL PROBLEMA
+Contexto del Problema
 
+El daltonismo (deficiencia en la percepción del color) afecta aproximadamente al 8% de los hombres y 0.5% de las mujeres a nivel mundial. En Colombia, miles de estudiantes pueden presentar algún tipo de daltonismo sin haber sido diagnosticados.
 
-2. DEFINICIÓN DEL PROBLEMA
-Contexto del Problema:
-Las Necesidades Educativas Especiales (NEE) afectan aproximadamente al 10-15% de la población estudiantil en Colombia, incluyendo condiciones como:
+Los tipos más comunes incluyen:
 
-Dislexia (dificultad en lectura/escritura)
-Discalculia (dificultad con números/matemáticas)
-TDAH (déficit de atención e hiperactividad)
-Trastornos del espectro autista
-Dificultades de aprendizaje no especificadas
+Deuteranopía (dificultad para distinguir rojo-verde)
 
-Problemática Actual:
-1. Detección Tardía:
+Protanopía (alteración en percepción del rojo)
 
-El diagnóstico promedio ocurre 2-3 años después de iniciados los síntomas
-Los estudiantes acumulan retraso académico y problemas emocionales
-La intervención temprana es hasta 6 veces más efectiva
+Tritanopía (dificultad azul-amarillo)
 
-2. Falta de Recursos:
+En el entorno educativo, el uso constante de colores en:
 
-Escasez de psicólogos educativos (1 por cada 500+ estudiantes)
-Procesos de evaluación largos y costosos
-Instituciones educativas sin herramientas de screening
+Mapas conceptuales
 
-3. Subjetividad en la Detección:
+Gráficas estadísticas
 
-Depende de la experiencia del docente
-Sesgos en la identificación (género, estrato socioeconómico)
-Falta de criterios estandarizados
+Material didáctico digital
 
-4. Ausencia de Seguimiento Sistemático:
+Presentaciones
 
-No hay trazabilidad del progreso estudiantil
-Intervenciones sin evidencia de efectividad
-Datos dispersos entre docentes
+Plataformas virtuales
 
-Reto Técnico:
+Puede generar barreras invisibles para estudiantes con esta condición.
+
+Problemática Actual
+1. Detección Tardía
+
+Muchos estudiantes desconocen que tienen daltonismo.
+
+El diagnóstico suele realizarse en la adolescencia o adultez.
+
+Se confunde con falta de atención o errores académicos.
+
+No se detecta porque no afecta la inteligencia, sino la percepción visual.
+
+2. Falta de Herramientas en Instituciones
+
+No se realizan pruebas básicas de percepción del color.
+
+No existen sistemas de evaluación digital accesible.
+
+Los docentes no están capacitados para identificar señales.
+
+3. Impacto Académico
+
+Dificultad para interpretar gráficos con códigos de color.
+
+Problemas en asignaturas como matemáticas, química, geografía o informática.
+
+Frustración al no entender materiales visuales correctamente.
+
+Evaluaciones mal diseñadas que dependen únicamente del color.
+
+4. Ausencia de Adaptaciones
+
+Plataformas educativas sin filtros de accesibilidad visual.
+
+Falta de contraste adecuado en interfaces digitales.
+
+No se generan versiones alternativas del material.
+
+Reto Técnico
+
 Desarrollar un sistema inteligente basado en Django que:
 
-Recopile y analice datos educativos de múltiples fuentes (evaluaciones, asistencia, comportamiento, tareas)
-Identifique patrones indicadores de NEE mediante algoritmos de Machine Learning, específicamente:
+1. Evaluación Digital Inicial
 
-Clasificación multiclase (tipo de NEE)
-Análisis de series temporales (evolución del rendimiento)
-Detección de anomalías (desviaciones significativas)
+Implemente pruebas tipo Ishihara digitales.
 
+Evalúe percepción cromática mediante ejercicios interactivos.
 
-Genere alertas tempranas para docentes y orientadores cuando se detecten señales de riesgo
-Proporcione recomendaciones personalizadas de adaptaciones curriculares y estrategias pedagógicas
-Realice seguimiento longitudinal del progreso de cada estudiante
+Registre patrones de error en la identificación de colores.
+
+2. Análisis mediante Machine Learning
+
+El sistema deberá:
+
+Clasificar el tipo de daltonismo (protanopía, deuteranopía, tritanopía).
+
+Detectar patrones repetitivos en errores visuales.
+
+Analizar desempeño en actividades dependientes del color.
+
+Modelos aplicables:
+
+Clasificación supervisada (Random Forest, SVM, Redes Neuronales).
+
+Análisis estadístico de respuestas incorrectas.
+
+3. Generación de Alertas Tempranas
+
+Notificar a docentes cuando se detecte posible daltonismo.
+
+Sugerir evaluación profesional confirmatoria.
+
+Emitir reportes individuales.
+
+4. Recomendaciones Automáticas
+
+El sistema propondrá:
+
+Adaptaciones de contraste alto.
+
+Sustitución de colores por patrones o etiquetas.
+
+Versiones accesibles de gráficos.
+
+Paletas de colores inclusivas.
+
+5. Seguimiento Longitudinal
+
+Registro histórico del estudiante.
+
+Medición del impacto de las adaptaciones.
+
+Evaluación del rendimiento académico antes y después de ajustes visuales.
+
+Objetivo General
+
+Desarrollar un sistema inteligente que permita la detección temprana de daltonismo en estudiantes y facilite la adaptación de materiales educativos digitales para garantizar igualdad de acceso a la información visual.
