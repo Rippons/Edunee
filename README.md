@@ -143,3 +143,5 @@ Evaluación del rendimiento académico antes y después de ajustes visuales.
 Objetivo General
 
 Desarrollar un sistema inteligente que permita la detección temprana de daltonismo en estudiantes y facilite la adaptación de materiales educativos digitales para garantizar igualdad de acceso a la información visual.
+<img width="505" height="203" alt="image" src="https://github.com/user-attachments/assets/5e6435af-0d61-4cc8-9a52-b28a7fed797f" />
+
