@@ -1,0 +1,67 @@
+# =========================
+# Python / Django
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.sqlite3
+*.log
+
+# =========================
+# Virtual environment
+# =========================
+venv/
+env/
+ENV/
+
+# =========================
+# Django
+# =========================
+*.env
+.env
+local_settings.py
+db.sqlite3
+media/
+staticfiles/
+
+# =========================
+# Migrations (opcional)
+# =========================
+*/migrations/__pycache__/
+*/migrations/*.pyc
+
+# ⚠️ Si quieres ignorar TODAS las migraciones (no recomendado en prod):
+# */migrations/
+
+# =========================
+# PostgreSQL
+# =========================
+*.psql
+*.dump
+
+# =========================
+# IDEs / Editores
+# =========================
+.vscode/
+.idea/
+*.swp
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# React / Node (por si luego mezclas)
+# =========================
+node_modules/
+dist/
+build/
+
+# =========================
+# Otros
+# =========================
+*.bak
+*.tmp
