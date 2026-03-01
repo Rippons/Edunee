@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.hashers import make_password, check_password
 
 
+
 class Administrador(models.Model):
     administrador_id = models.AutoField(primary_key=True)
     usuario = models.CharField(max_length=50, unique=True)
