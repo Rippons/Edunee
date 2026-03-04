@@ -1,40 +1,38 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Administrador
-from .serializers import LoginSerializer
+from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import AllowAny
+from .serializers import LoginSerializer
+
 
 class LoginAdministradorView(APIView):
-    permission_classes = [AllowAny]  # Permitir login público
+    permission_classes = [AllowAny]
 
     def post(self, request):
         serializer = LoginSerializer(data=request.data)
+
         if serializer.is_valid():
-            usuario = serializer.validated_data["usuario"]
-            contrasena = serializer.validated_data["contrasena"]
+            username = serializer.validated_data["username"]
+            password = serializer.validated_data["password"]
 
-            try:
-                admin = Administrador.objects.get(usuario=usuario)
+            user = authenticate(username=username, password=password)
 
-                # Usamos check_password de tu modelo
-                if admin.check_password(contrasena):
-                    # Creamos tokens JWT
-                    refresh = RefreshToken.for_user(admin)
+            if user is not None:
+                refresh = RefreshToken.for_user(user)
 
-                    return Response({
-                        "message": "Login exitoso",
-                        "administrador_id": admin.administrador_id,
-                        "usuario": admin.usuario,
-                        "access": str(refresh.access_token),
-                        "refresh": str(refresh)
-                    }, status=status.HTTP_200_OK)
-                else:
-                    return Response({"error": "Contraseña incorrecta"}, status=status.HTTP_401_UNAUTHORIZED)
-            
-            except Administrador.DoesNotExist:
-                return Response({"error": "Usuario no existe"}, status=status.HTTP_404_NOT_FOUND)
+                return Response({
+                    "message": "Login exitoso",
+                    "administrador_id": user.id,
+                    "username": user.username,
+                    "access": str(refresh.access_token),
+                    "refresh": str(refresh)
+                }, status=status.HTTP_200_OK)
 
-        # Errores de validación del serializer
+            return Response(
+                {"error": "Credenciales incorrectas"},
+                status=status.HTTP_401_UNAUTHORIZED
+            )
+
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

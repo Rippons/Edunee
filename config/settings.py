@@ -86,9 +86,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
-        'USER': 'postgres.gqhmjufrjrmtgimjmukl',
+        'USER': 'postgres.hlgmdheeqziwdcrfpgxg',
         'PASSWORD': 'gausparadoxyripponss763453712',
-        'HOST': 'aws-1-us-east-2.pooler.supabase.com',
+        'HOST': 'aws-0-us-west-2.pooler.supabase.com',
         'PORT': '5432',
     }
 }
@@ -166,9 +166,11 @@ SIMPLE_JWT = {
 
     'AUTH_HEADER_TYPES': ('Bearer',),
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
-    'USER_ID_FIELD': 'administrador_id',
+
+    'USER_ID_FIELD': 'id',  
     'USER_ID_CLAIM': 'user_id',
 }
+
 
 
 # =========================

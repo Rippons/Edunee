@@ -1,14 +1,16 @@
 from rest_framework import serializers
 from .models import Administrador, Paciente
 
+
 class AdministradorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Administrador
         fields = [
-            "administrador_id",
-            "usuario",
+            "id",
+            "username",
             "fecha_creacion",
         ]
+
 
 class PacienteSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,5 +19,5 @@ class PacienteSerializer(serializers.ModelSerializer):
 
 
 class LoginSerializer(serializers.Serializer):
-    usuario = serializers.CharField()
-    contrasena = serializers.CharField(write_only=True)       
+    username = serializers.CharField()
+    password = serializers.CharField(write_only=True)

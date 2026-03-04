@@ -64,7 +64,7 @@ class PreguntaPruebaSerializer(serializers.ModelSerializer):
 # =========================
 class PruebaDetalleSerializer(serializers.ModelSerializer):
     preguntas = serializers.SerializerMethodField()
-    categoria = CategoriaDaltonismoSerializer(read_only=True)  # seguro
+    categoria = CategoriaDaltonismoSerializer(read_only=True)
 
     class Meta:
         model = Prueba
@@ -76,31 +76,15 @@ class PruebaDetalleSerializer(serializers.ModelSerializer):
             "categoria",
             "preguntas",
             "activa",
-            "fecha_creacion",
-            "creado_por"
+            "fecha_creacion"
+           
         ]
 
-    def get_preguntas(self, obj):
-        preguntas = (
-            obj.preguntaprueba_set
-            .all()
-            .order_by("orden")
-            .prefetch_related("opcionrespuesta_set")
-        )
-
-        return PreguntaPruebaSerializer(
-            preguntas,
-            many=True,
-            context=self.context
-        ).data
-
-
 # =========================
-# PRUEBA SIMPLE (CRUD / DASHBOARD)
+# PRUEBA SIMPLE (DASHBOARD)
 # =========================
 class PruebaSerializer(serializers.ModelSerializer):
     categoria = CategoriaDaltonismoSerializer(read_only=True)
-    creado_por = serializers.StringRelatedField(read_only=True)
 
     class Meta:
         model = Prueba
@@ -111,8 +95,8 @@ class PruebaSerializer(serializers.ModelSerializer):
             "descripcion",
             "categoria",
             "activa",
-            "fecha_creacion",
-            "creado_por"
+            "fecha_creacion"
+            
         ]
 
 

@@ -1,46 +1,17 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
-from django.contrib.auth.hashers import make_password, check_password
+from django.contrib.auth.models import AbstractUser
 
-class AdministradorManager(BaseUserManager):
-    def create_user(self, usuario, contrasena=None):
-        if not usuario:
-            raise ValueError("El usuario es obligatorio")
-        admin = self.model(usuario=usuario)
-        admin.set_password(contrasena)
-        admin.save(using=self._db)
-        return admin
 
-    def create_superuser(self, usuario, contrasena):
-        admin = self.create_user(usuario, contrasena)
-        admin.is_superuser = True
-        admin.is_staff = True
-        admin.save(using=self._db)
-        return admin
-
-class Administrador(AbstractBaseUser, PermissionsMixin):
-    administrador_id = models.AutoField(primary_key=True)
-    usuario = models.CharField(max_length=50, unique=True)
-    contrasena = models.CharField(max_length=255)
+class Administrador(AbstractUser):
     fecha_creacion = models.DateTimeField(auto_now_add=True)
 
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
-
-    objects = AdministradorManager()
-
-    USERNAME_FIELD = "usuario"
-
-    def save(self, *args, **kwargs):
-        if self.contrasena and not self.contrasena.startswith("pbkdf2_"):
-            self.contrasena = make_password(self.contrasena)
-        super().save(*args, **kwargs)
-
-    def check_password(self, raw_password):
-        return check_password(raw_password, self.contrasena)
+    class Meta:
+        db_table = "administradores"
 
     def __str__(self):
-        return self.usuario
+        return self.username
+
+
 
 class Paciente(models.Model):
     paciente_id = models.AutoField(primary_key=True)

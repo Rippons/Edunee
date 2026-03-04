@@ -32,14 +32,6 @@ class Prueba(models.Model):
         db_column="categoria_id"
     )
 
-    creado_por = models.ForeignKey(
-        Administrador,
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        db_column="creado_por"
-    )
-
     activa = models.BooleanField(default=True)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
 
@@ -48,6 +40,7 @@ class Prueba(models.Model):
 
     def __str__(self):
         return self.nombre_prueba
+
 
 
 # =========================
