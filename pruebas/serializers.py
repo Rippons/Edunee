@@ -1,6 +1,4 @@
 from rest_framework import serializers
-from django.conf import settings
-
 from .models import (
     CategoriaDaltonismo,
     Prueba,
@@ -10,18 +8,17 @@ from .models import (
     RespuestaPrueba
 )
 
-
 # =========================
 # CATEGORÍA
 # =========================
 class CategoriaDaltonismoSerializer(serializers.ModelSerializer):
     class Meta:
         model = CategoriaDaltonismo
-        fields = "__all__"
+        fields = ["categoria_id", "nombre", "descripcion"]  # evita __all__ para mayor control
 
 
 # =========================
-# OPCIONES (VERSIÓN PARA MOSTRAR EN TEST)
+# OPCIONES DE RESPUESTA
 # =========================
 class OpcionRespuestaSerializer(serializers.ModelSerializer):
     class Meta:
@@ -34,7 +31,7 @@ class OpcionRespuestaSerializer(serializers.ModelSerializer):
 
 
 # =========================
-# PREGUNTAS (CON IMAGEN Y OPCIONES)
+# PREGUNTAS (CON OPCIONES E IMAGEN)
 # =========================
 class PreguntaPruebaSerializer(serializers.ModelSerializer):
     opciones = OpcionRespuestaSerializer(
@@ -57,31 +54,39 @@ class PreguntaPruebaSerializer(serializers.ModelSerializer):
 
     def get_recurso_visual(self, obj):
         request = self.context.get("request")
-        if obj.recurso_visual:
-            # Forma correcta cuando el campo es ImageField
+        if obj.recurso_visual and request:
             return request.build_absolute_uri(obj.recurso_visual.url)
         return None
 
 
 # =========================
-# PRUEBA (DETALLE COMPLETO CON PREGUNTAS)
+# PRUEBA (DETALLE COMPLETO)
 # =========================
 class PruebaDetalleSerializer(serializers.ModelSerializer):
     preguntas = serializers.SerializerMethodField()
+    categoria = CategoriaDaltonismoSerializer(read_only=True)  # seguro
 
     class Meta:
         model = Prueba
         fields = [
             "prueba_id",
             "nombre_prueba",
+            "tipo_prueba",
             "descripcion",
-            "preguntas"
+            "categoria",
+            "preguntas",
+            "activa",
+            "fecha_creacion",
+            "creado_por"
         ]
 
     def get_preguntas(self, obj):
-        preguntas = obj.preguntaprueba_set.all() \
-            .order_by("orden") \
+        preguntas = (
+            obj.preguntaprueba_set
+            .all()
+            .order_by("orden")
             .prefetch_related("opcionrespuesta_set")
+        )
 
         return PreguntaPruebaSerializer(
             preguntas,
@@ -91,16 +96,28 @@ class PruebaDetalleSerializer(serializers.ModelSerializer):
 
 
 # =========================
-# PRUEBA SIMPLE (SI NECESITAS CRUD)
+# PRUEBA SIMPLE (CRUD / DASHBOARD)
 # =========================
 class PruebaSerializer(serializers.ModelSerializer):
+    categoria = CategoriaDaltonismoSerializer(read_only=True)
+    creado_por = serializers.StringRelatedField(read_only=True)
+
     class Meta:
         model = Prueba
-        fields = "__all__"
+        fields = [
+            "prueba_id",
+            "nombre_prueba",
+            "tipo_prueba",
+            "descripcion",
+            "categoria",
+            "activa",
+            "fecha_creacion",
+            "creado_por"
+        ]
 
 
 # =========================
-# SESIÓN
+# SESIÓN DE PRUEBA
 # =========================
 class SesionPruebaSerializer(serializers.ModelSerializer):
     class Meta:
@@ -109,7 +126,7 @@ class SesionPruebaSerializer(serializers.ModelSerializer):
 
 
 # =========================
-# RESPUESTA (PARA GUARDAR RESPUESTAS)
+# RESPUESTA DE USUARIO
 # =========================
 class RespuestaPruebaSerializer(serializers.ModelSerializer):
     class Meta:
