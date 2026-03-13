@@ -145,3 +145,151 @@ Objetivo General
 Desarrollar un sistema inteligente que permita la detección temprana de daltonismo en estudiantes y facilite la adaptación de materiales educativos digitales para garantizar igualdad de acceso a la información visual.
 <img width="505" height="203" alt="image" src="https://github.com/user-attachments/assets/5e6435af-0d61-4cc8-9a52-b28a7fed797f" />
 
+English Version
+# EDUNEEDAL
+Project: Intelligent System for Early Detection of Color Blindness in Educational Environments
+PROJECT TITLE
+
+Technical Name: EDUNEEDAL - Intelligent System for Early Detection of Color Blindness
+
+Application Area: Inclusive Education and Visual Assistive Technology
+
+Technical Classification:
+
+Main Area: Applied Mathematics (Machine Learning, Visual Pattern Analysis)
+
+Secondary Areas:
+
+Applied Artificial Intelligence
+
+Educational Data Analysis
+
+Decision Support Systems
+
+Digital Accessibility
+``
+PROBLEM DEFINITION
+Problem Context
+
+Color blindness (a deficiency in color perception) affects approximately 8% of men and 0.5% of women worldwide. In Colombia, thousands of students may have some type of color blindness without having been diagnosed.
+
+The most common types include:
+
+Deuteranopia (difficulty distinguishing red from green)
+
+Protanopia (impaired perception of red)
+
+Tritanopia (difficulty distinguishing blue from yellow)
+
+In the educational setting, the constant use of colors in:
+
+Concept maps
+
+Statistical graphs
+
+Digital teaching materials
+
+Presentations
+
+Virtual platforms
+
+Can create invisible barriers for students with this condition.
+
+Current Problems
+1. Late Detection
+
+Many students are unaware that they have color blindness.
+
+Diagnosis is usually made in adolescence or adulthood.
+
+It is often mistaken for inattention or academic difficulties.
+
+It goes undetected because it does not affect intelligence, but rather visual perception.
+
+2. Lack of Resources in Institutions
+
+Basic color perception tests are not administered.
+
+Accessible digital assessment systems are lacking.
+
+Teachers are not trained to identify signs.
+
+3. Academic Impact
+
+Difficulty interpreting color-coded graphics.
+
+Problems in subjects such as mathematics, chemistry, geography, or computer science.
+
+Frustration at not understanding visual materials correctly.
+
+Poorly designed assessments that rely solely on color.
+
+4. Lack of Adaptations
+
+Educational platforms without visual accessibility filters.
+
+Lack of adequate contrast in digital interfaces.
+
+No alternative versions of the material are generated.
+
+Technical Challenge
+
+Develop an intelligent system based on Django that:
+
+1. Initial Digital Assessment
+
+Implement digital Ishihara-type tests.
+
+Evaluate color perception through interactive exercises.
+
+Record error patterns in color identification.
+
+2. Analysis using Machine Learning
+
+The system should:
+
+Classify the type of color blindness (protanopia, deuteranopia, tritanopia).
+
+Detect repetitive patterns in visual errors.
+
+Analyze performance in color-dependent activities.
+
+Applicable models:
+
+Supervised classification (Random Forest, SVM, Neural Networks).
+
+Statistical analysis of incorrect responses.
+
+3. Early Warning System
+
+Notify teachers when possible color blindness is detected.
+
+Suggest confirmatory professional evaluation.
+
+Generate individual reports.
+
+4. Automatic Recommendations
+
+The system will propose:
+
+High-contrast adaptations.
+
+Replacement of colors with patterns or labels.
+
+Accessible versions of graphics.
+
+Inclusive color palettes.
+
+5. Longitudinal Monitoring
+
+Student historical record.
+
+Measurement of the impact of adaptations.
+
+Evaluation of academic performance before and after visual adjustments.
+
+General Objective
+
+To develop an intelligent system that allows for the early detection of color blindness in students and facilitates the adaptation of digital educational materials to guarantee equal access to visual information.
+
+<img width="505" height="203" alt="image" src="https://github.com/user-attachments/assets/5e6435af-0d61-4cc8-9a52-b28a7fed797f" />
