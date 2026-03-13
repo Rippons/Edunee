@@ -11,8 +11,12 @@ class LoginAdministradorView(APIView):
     permission_classes = [AllowAny]
 
     def post(self, request):
+        # Guía 4 - Act #1 (User Input): captura dinámica desde `request.data` y validación tipada vía serializer para prevenir entradas inválidas antes del procesamiento.
         serializer = LoginSerializer(data=request.data)
 
+        # Guía 4 - Act #3 (Integración 1-4): este flujo consolida Captura (request) -> Procesamiento (validación/autenticación) -> Salida (Response con éxito o error).
+
+        # Actividad 1 Guia 3 (if/elif/else): motor de decisión de negocio con rutas de éxito y estados residuales (credenciales inválidas y datos inválidos) para evitar respuestas indefinidas.
         if serializer.is_valid():
             username = serializer.validated_data["username"]
             password = serializer.validated_data["password"]

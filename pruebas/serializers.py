@@ -54,6 +54,7 @@ class PreguntaPruebaSerializer(serializers.ModelSerializer):
 
     def get_recurso_visual(self, obj):
         request = self.context.get("request")
+        # Actividad 2 Guia 3 (lógica anidada y operadores de control): validación compuesta con corto circuito usando `and` para avanzar solo si existe recurso e información de request.
         if obj.recurso_visual and request:
             return request.build_absolute_uri(obj.recurso_visual.url)
         return None

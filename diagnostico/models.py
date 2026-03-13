@@ -33,6 +33,7 @@ class ResultadoDiagnostico(models.Model):
         db_table = 'resultados_diagnostico'
 
     def __str__(self):
+        # Guía 4 - Act #2 (Output Formatting): salida textual con f-string para presentar identificadores de forma clara y profesional.
         return f"Diagnóstico sesión {self.sesion_id}"
     
 class RegistroDeteccionColor(models.Model):

@@ -23,6 +23,7 @@ class PruebasRecientesView(APIView):
             serializer = PruebaSerializer(pruebas, many=True)
             return Response(serializer.data)
         except Exception as e:
+            # Actividad 3 Guia 3 (debugging y pruebas de flujo): bloque de auditoría técnica para inspeccionar fallos internos (white/grey box) y garantizar salida controlada al cliente (black box).
             
             print("Error en PruebasRecientesView:", str(e))
             traceback.print_exc()

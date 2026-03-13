@@ -21,5 +21,6 @@ urlpatterns = [
 ]
 
 # Servir archivos multimedia en desarrollo
+# Actividad 4 Guia 2 (Operators): uso de operador lógico/comparativo en la condición `if settings.DEBUG` y operador de incremento `+=` para extender rutas.
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

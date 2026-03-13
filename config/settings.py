@@ -131,6 +131,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_CREDENTIALS = True
 
+# Actividad 3 Guia 2 (Lists Construction): lista de cabeceras permitidas para solicitudes del sistema.
 CORS_ALLOW_HEADERS = [
     'authorization',
     'content-type',
