@@ -6,7 +6,9 @@ from django.conf.urls.static import static
 from usuarios.views import LoginAdministradorView
 from pruebas.views import (
     PruebaDetalleView,
-    PruebasRecientesView
+    PruebasRecientesView,
+    RegistrarPruebaView,
+    ResultadosAdminView,
 )
 
 urlpatterns = [
@@ -15,12 +17,12 @@ urlpatterns = [
     # AUTH
     path('api/login/', LoginAdministradorView.as_view(), name='login_administrador'),
 
-    # PRUEBAS
-    path('api/pruebas/recientes/', PruebasRecientesView.as_view(), name='pruebas_recientes'),
-    path('api/pruebas/<int:prueba_id>/', PruebaDetalleView.as_view(), name='prueba_detalle'),
+    # PRUEBAS — orden importante: rutas específicas primero, genéricas después
+    path('api/pruebas/recientes/',                      PruebasRecientesView.as_view(),  name='pruebas_recientes'),
+    path('api/pruebas/resultados/',                     ResultadosAdminView.as_view(),   name='resultados-admin'),
+    path('api/pruebas/<int:prueba_id>/',                PruebaDetalleView.as_view(),     name='prueba_detalle'),
+    path('api/pruebas/<int:prueba_id>/registrar/',      RegistrarPruebaView.as_view(),   name='registrar-prueba'),
 ]
 
-# Servir archivos multimedia en desarrollo
-# Actividad 4 Guia 2 (Operators): uso de operador lógico/comparativo en la condición `if settings.DEBUG` y operador de incremento `+=` para extender rutas.
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
