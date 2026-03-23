@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 import traceback
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from django.utils import timezone
 from .models import SesionPrueba, RespuestaPrueba, PreguntaPrueba, OpcionRespuesta
@@ -20,16 +21,22 @@ from .serializers import (
 # PRUEBAS RECIENTES (DASHBOARD)
 # =========================
 class PruebasRecientesView(APIView):
+    authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
 
-    def get(self, request):
+    def get(self, request, paciente_id=None):
         try:
+            print(f"Usuario: {request.user}")
+            print(f"Autenticado: {request.user.is_authenticated}")
+            print(f"Paciente ID en URL: {paciente_id}")
+            
+            if paciente_id is not None:
+                paciente = get_object_or_404(Paciente, pk=paciente_id)
+
             pruebas = Prueba.objects.filter(activa=True).order_by('-fecha_creacion')[:3]
             serializer = PruebaSerializer(pruebas, many=True)
             return Response(serializer.data)
         except Exception as e:
-            # Actividad 3 Guia 3 (debugging y pruebas de flujo): bloque de auditoría técnica para inspeccionar fallos internos (white/grey box) y garantizar salida controlada al cliente (black box).
-            
             print("Error en PruebasRecientesView:", str(e))
             traceback.print_exc()
             return Response({"error": "Ocurrió un error en el servidor"}, status=500)
