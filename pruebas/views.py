@@ -20,6 +20,7 @@ from .serializers import (
 # =========================
 # PRUEBAS RECIENTES (DASHBOARD)
 # =========================
+# Guía Práctica N°. 6: Arrays y Matrices Actividad 1
 class PruebasRecientesView(APIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
@@ -72,21 +73,22 @@ class PruebaDetalleView(APIView):
 # from .models import Prueba, SesionPrueba, RespuestaPrueba, PreguntaPrueba, OpcionRespuesta
 # from .serializers import RegistroPruebaSerializer
 # from usuarios.models import Paciente
- 
+
+# Guía práctica N°. 5: Estructuras iterativas y diccionarios Actividad 2
 class RegistrarPruebaView(APIView):
     permission_classes = [IsAuthenticated]
- 
+
     def post(self, request, prueba_id):
         serializer = RegistroPruebaSerializer(data=request.data)
- 
+
         if not serializer.is_valid():
             return Response(serializer.errors, status=400)
- 
+
         data = serializer.validated_data
- 
+
         # ── 1. Obtener la prueba ──────────────────────────────────────────────
         prueba = get_object_or_404(Prueba, pk=prueba_id, activa=True)
- 
+
         # ── 2. Crear o recuperar el paciente ─────────────────────────────────
         paciente_data = data['paciente']
         paciente, _ = Paciente.objects.get_or_create(
@@ -99,7 +101,7 @@ class RegistrarPruebaView(APIView):
                 'genero':    paciente_data.get('genero', ''),
             }
         )
- 
+
         # ── 3. Crear la sesión ────────────────────────────────────────────────
         sesion = SesionPrueba.objects.create(
             paciente=paciente,
@@ -107,14 +109,15 @@ class RegistrarPruebaView(APIView):
             fecha_inicio=timezone.now(),
             estado='completada',
         )
- 
+
         # ── 4. Guardar respuestas ─────────────────────────────────────────────
         respuestas_creadas = []
- 
+        
+        # Guía práctica N°. 5: Estructuras iterativas y diccionarios Actividad 1
         for r in data['respuestas']:
             pregunta = get_object_or_404(PreguntaPrueba, pk=r['pregunta_id'])
             opcion   = get_object_or_404(OpcionRespuesta, pk=r['opcion_seleccionada_id'])
- 
+
             respuesta = RespuestaPrueba.objects.create(
                 sesion=sesion,
                 pregunta=pregunta,
@@ -123,11 +126,11 @@ class RegistrarPruebaView(APIView):
                 puntaje_obtenido=opcion.puntaje,
             )
             respuestas_creadas.append(respuesta.respuesta_id)
- 
+
         # ── 5. Cerrar sesión ──────────────────────────────────────────────────
         sesion.fecha_fin = timezone.now()
         sesion.save()
- 
+
         return Response({
             "mensaje":      "Prueba registrada exitosamente",
             "sesion_id":    sesion.sesion_id,
@@ -135,9 +138,10 @@ class RegistrarPruebaView(APIView):
             "respuestas":   respuestas_creadas,
         }, status=201)
     
+# Guía Práctica N°. 6: Arrays y Matrices Actividad 1
 class ResultadosAdminView(APIView):
     permission_classes = [IsAuthenticated]
- 
+
     def get(self, request):
         try:
             sesiones = (

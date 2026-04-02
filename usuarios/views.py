@@ -15,6 +15,7 @@ from .models import PacienteUser
 
 
 
+# Guía práctica N°. 5: Estructuras iterativas y diccionarios Actividad 2
 class LoginAdministradorView(APIView):
     permission_classes = [AllowAny]
 
@@ -64,6 +65,7 @@ class RegistroPacienteView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
  
  
+# Guía práctica N°. 5: Estructuras iterativas y diccionarios Actividad 2
 class LoginPacienteView(APIView):
     permission_classes = [AllowAny]
  
@@ -106,6 +108,7 @@ class LoginPacienteView(APIView):
             'genero':     paciente.genero,
         }, status=status.HTTP_200_OK)
 
+# Guía Práctica N°. 6: Arrays y Matrices Actividad 1
 class GestionUsuariosView(APIView):
     permission_classes = [IsAuthenticated]
  

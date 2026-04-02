@@ -33,6 +33,7 @@ class RegistroPacienteSerializer(serializers.Serializer):
     password              = serializers.CharField(write_only=True)
     confirmPassword       = serializers.CharField(write_only=True)
  
+    # Guía práctica N°. 5: Estructuras iterativas y diccionarios Actividad 2
     def validate(self, data):
         if data['password'] != data['confirmPassword']:
             raise serializers.ValidationError({'confirmPassword': 'Las contraseñas no coinciden.'})
@@ -42,6 +43,7 @@ class RegistroPacienteSerializer(serializers.Serializer):
             raise serializers.ValidationError({'numeroIdentificacion': 'Ya existe un paciente con esta identificación.'})
         return data
  
+    # Guía práctica N°. 5: Estructuras iterativas y diccionarios Actividad 2
     def create(self, validated_data):
         # 1. Crear el Paciente
         paciente = Paciente.objects.create(
