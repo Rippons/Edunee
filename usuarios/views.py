@@ -15,17 +15,17 @@ from .models import PacienteUser
 
 
 
-# Guía práctica N°. 5: Estructuras iterativas y diccionarios Actividad 2
+# Guia Practica 5 Estructuras iterativas y diccionarios Actividad 2
 class LoginAdministradorView(APIView):
     permission_classes = [AllowAny]
 
     def post(self, request):
-        # Guía 4 - Act #1 (User Input): captura dinámica desde `request.data` y validación tipada vía serializer para prevenir entradas inválidas antes del procesamiento.
+        # Guia Practica 4 User Input Actividad 1
         serializer = LoginSerializer(data=request.data)
 
-        # Guía 4 - Act #3 (Integración 1-4): este flujo consolida Captura (request) -> Procesamiento (validación/autenticación) -> Salida (Response con éxito o error).
+        # Guia Practica 4 Integracion 1-4 Actividad 3
 
-        # Actividad 1 Guia 3 (if/elif/else): motor de decisión de negocio con rutas de éxito y estados residuales (credenciales inválidas y datos inválidos) para evitar respuestas indefinidas.
+        # Guia Practica 3 if/elif/else Actividad 1
         if serializer.is_valid():
             username = serializer.validated_data["username"]
             password = serializer.validated_data["password"]
@@ -65,11 +65,13 @@ class RegistroPacienteView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
  
  
-# Guía práctica N°. 5: Estructuras iterativas y diccionarios Actividad 2
+# Guia Practica 5 Estructuras iterativas y diccionarios Actividad 2
 class LoginPacienteView(APIView):
     permission_classes = [AllowAny]
  
     def post(self, request):
+        # Guia Practica 3 Implementacion de Logica Anidada y Operadores de Control Actividad 2
+        # Guia Practica 3 Debugging y Metodologias de Prueba del Flujo Logico Actividad 3
         serializer = LoginPacienteSerializer(data=request.data)
         if not serializer.is_valid():
             print(f"Serializer errors: {serializer.errors}")
@@ -108,7 +110,7 @@ class LoginPacienteView(APIView):
             'genero':     paciente.genero,
         }, status=status.HTTP_200_OK)
 
-# Guía Práctica N°. 6: Arrays y Matrices Actividad 1
+# Guia Practica 6 Arrays y Matrices Actividad 1
 class GestionUsuariosView(APIView):
     permission_classes = [IsAuthenticated]
  

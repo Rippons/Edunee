@@ -20,12 +20,13 @@ from .serializers import (
 # =========================
 # PRUEBAS RECIENTES (DASHBOARD)
 # =========================
-# Guía Práctica N°. 6: Arrays y Matrices Actividad 1
+# Guia Practica 6 Arrays y Matrices Actividad 1
 class PruebasRecientesView(APIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get(self, request, paciente_id=None):
+        # Guia Practica 3 Debugging y Metodologias de Prueba del Flujo Logico Actividad 3
         try:
             print(f"Usuario: {request.user}")
             print(f"Autenticado: {request.user.is_authenticated}")
@@ -74,7 +75,7 @@ class PruebaDetalleView(APIView):
 # from .serializers import RegistroPruebaSerializer
 # from usuarios.models import Paciente
 
-# Guía práctica N°. 5: Estructuras iterativas y diccionarios Actividad 2
+# Guia Practica 5 Estructuras iterativas y diccionarios Actividad 2
 class RegistrarPruebaView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -113,7 +114,7 @@ class RegistrarPruebaView(APIView):
         # ── 4. Guardar respuestas ─────────────────────────────────────────────
         respuestas_creadas = []
         
-        # Guía práctica N°. 5: Estructuras iterativas y diccionarios Actividad 1
+        # Guia Practica 5 Estructuras iterativas y diccionarios Actividad 1
         for r in data['respuestas']:
             pregunta = get_object_or_404(PreguntaPrueba, pk=r['pregunta_id'])
             opcion   = get_object_or_404(OpcionRespuesta, pk=r['opcion_seleccionada_id'])
@@ -138,11 +139,12 @@ class RegistrarPruebaView(APIView):
             "respuestas":   respuestas_creadas,
         }, status=201)
     
-# Guía Práctica N°. 6: Arrays y Matrices Actividad 1
+# Guia Practica 6 Arrays y Matrices Actividad 1
 class ResultadosAdminView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
+        # Guia Practica 3 Debugging y Metodologias de Prueba del Flujo Logico Actividad 3
         try:
             sesiones = (
                 SesionPrueba.objects

@@ -4,7 +4,7 @@ import os
 import sys
 
 
-# Actividad 2 Guia 2 (Syntax & Variables): punto de entrada con sintaxis limpia, variable de entorno central y estructura alineada a buenas prácticas (PEP 8).
+# Guia Practica 2 Syntax & Variables Actividad 2
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
