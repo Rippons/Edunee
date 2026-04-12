@@ -15,17 +15,15 @@ from .models import PacienteUser
 
 
 
-# Guia Practica 5 Estructuras iterativas y diccionarios Actividad 2
 class LoginAdministradorView(APIView):
     permission_classes = [AllowAny]
 
+    #Guia #4 ALGORITMOS DE INTERACCION E INPUT/OUTPUT Gestion de entrada dinamica (User Input) Actividad 1
+    #Guia #4 ALGORITMOS DE INTERACCION E INPUT/OUTPUT Consolidacion del Core funcional (Integracion 1-4) Actividad 3
+    #Guia #3 ESTRUCTURAS DE CONTROL LOGICO Y REGLAS DE NEGOCIO Modelado de Reglas de Negocio Complejas (if / elif / else) Actividad 1
     def post(self, request):
-        # Guia Practica 4 User Input Actividad 1
         serializer = LoginSerializer(data=request.data)
 
-        # Guia Practica 4 Integracion 1-4 Actividad 3
-
-        # Guia Practica 3 if/elif/else Actividad 1
         if serializer.is_valid():
             username = serializer.validated_data["username"]
             password = serializer.validated_data["password"]
@@ -53,6 +51,8 @@ class LoginAdministradorView(APIView):
 class RegistroPacienteView(APIView):
     permission_classes = [AllowAny]
  
+    #Guia #4 ALGORITMOS DE INTERACCION E INPUT/OUTPUT Gestion de entrada dinamica (User Input) Actividad 1
+    #Guia #4 ALGORITMOS DE INTERACCION E INPUT/OUTPUT Consolidacion del Core funcional (Integracion 1-4) Actividad 3
     def post(self, request):
         serializer = RegistroPacienteSerializer(data=request.data)
         if serializer.is_valid():
@@ -65,13 +65,16 @@ class RegistroPacienteView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
  
  
-# Guia Practica 5 Estructuras iterativas y diccionarios Actividad 2
 class LoginPacienteView(APIView):
     permission_classes = [AllowAny]
  
+    #Guia #4 ALGORITMOS DE INTERACCION E INPUT/OUTPUT Gestion de entrada dinamica (User Input) Actividad 1
+    #Guia #4 ALGORITMOS DE INTERACCION E INPUT/OUTPUT Formateo avanzado de salida (Output Formatting) Actividad 2
+    #Guia #4 ALGORITMOS DE INTERACCION E INPUT/OUTPUT Consolidacion del Core funcional (Integracion 1-4) Actividad 3
+    #Guia #3 ESTRUCTURAS DE CONTROL LOGICO Y REGLAS DE NEGOCIO Implementacion de Logica Anidada y Operadores de Control Actividad 2
+    #Guia #3 ESTRUCTURAS DE CONTROL LOGICO Y REGLAS DE NEGOCIO Debugging y Metodologias de Prueba del Flujo Logico Actividad 3
     def post(self, request):
-        # Guia Practica 3 Implementacion de Logica Anidada y Operadores de Control Actividad 2
-        # Guia Practica 3 Debugging y Metodologias de Prueba del Flujo Logico Actividad 3
+
         serializer = LoginPacienteSerializer(data=request.data)
         if not serializer.is_valid():
             print(f"Serializer errors: {serializer.errors}")
@@ -110,10 +113,11 @@ class LoginPacienteView(APIView):
             'genero':     paciente.genero,
         }, status=status.HTTP_200_OK)
 
-# Guia Practica 6 Arrays y Matrices Actividad 1
 class GestionUsuariosView(APIView):
     permission_classes = [IsAuthenticated]
  
+    #Guia #6 ARRAYS Y MATRICES (ESTRUCTURAS MULTIDIMENSIONALES) Implementacion de Vectores en el Modelo de Negocio Actividad 1
+    #Guia #3 ESTRUCTURAS DE CONTROL LOGICO Y REGLAS DE NEGOCIO Debugging y Metodologias de Prueba del Flujo Logico Actividad 3
     def get(self, request):
         administradores = Administrador.objects.all().order_by('date_joined')
         pacientes       = PacienteUser.objects.select_related('paciente').order_by('fecha_creacion')

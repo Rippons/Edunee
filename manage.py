@@ -4,7 +4,8 @@ import os
 import sys
 
 
-# Guia Practica 2 Syntax & Variables Actividad 2
+#Guia #2 SINTAXIS BASICA Y GESTION DE COLECCIONES Estructuracion del Core de Datos (Syntax & Variables) Actividad 2
+#Guia #7 SUBALGORITMOS Y REFACTORIZACION FUNCIONAL Refactoring Integral del Proyecto Actividad 3
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')

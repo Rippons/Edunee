@@ -32,8 +32,8 @@ class ResultadoDiagnostico(models.Model):
     class Meta:
         db_table = 'resultados_diagnostico'
 
+    #Guia #4 ALGORITMOS DE INTERACCION E INPUT/OUTPUT Formateo avanzado de salida (Output Formatting) Actividad 2
     def __str__(self):
-        # Guia Practica 4 Output Formatting Actividad 2
         return f"Diagnóstico sesión {self.sesion_id}"
     
 class RegistroDeteccionColor(models.Model):

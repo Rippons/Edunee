@@ -33,7 +33,8 @@ class RegistroPacienteSerializer(serializers.Serializer):
     password              = serializers.CharField(write_only=True)
     confirmPassword       = serializers.CharField(write_only=True)
  
-    # Guia Practica 3 Implementacion de Logica Anidada y Operadores de Control Actividad 2
+    #Guia #3 ESTRUCTURAS DE CONTROL LOGICO Y REGLAS DE NEGOCIO Implementacion de Logica Anidada y Operadores de Control Actividad 2
+    #Guia #2 SINTAXIS BASICA Y GESTION DE COLECCIONES Logica Aritmetica y Comparativa (Operators) Actividad 4
     def validate(self, data):
         if data['password'] != data['confirmPassword']:
             raise serializers.ValidationError({'confirmPassword': 'Las contraseñas no coinciden.'})
@@ -43,7 +44,7 @@ class RegistroPacienteSerializer(serializers.Serializer):
             raise serializers.ValidationError({'numeroIdentificacion': 'Ya existe un paciente con esta identificación.'})
         return data
  
-    # Guia Practica 5 Estructuras iterativas y diccionarios Actividad 2
+    #Guia #5 ESTRUCTURAS ITERATIVAS Y DICCIONARIOS Estructuracion de datos con diccionarios (Dictionaries) Actividad 2
     def create(self, validated_data):
         # 1. Crear el Paciente
         paciente = Paciente.objects.create(

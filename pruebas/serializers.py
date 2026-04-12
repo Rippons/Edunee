@@ -138,7 +138,6 @@ class PacienteInputSerializer(serializers.Serializer):
     fecha_registro        = serializers.DateTimeField(required=False)
 
 
-# Guia Practica 6 Arrays y Matrices Actividad 2
 class RegistroPruebaSerializer(serializers.Serializer):
     paciente   = PacienteInputSerializer()
     respuestas = RespuestaInputSerializer(many=True)
@@ -147,7 +146,6 @@ class RegistroPruebaSerializer(serializers.Serializer):
 # =========================
 # RESULTADOS PARA ADMINISTRADOR
 # =========================
-# Guia Practica 6 Arrays y Matrices Actividad 3
 class PacienteResumenSerializer(serializers.ModelSerializer):
     class Meta:
         model = Paciente
@@ -203,6 +201,9 @@ class SesionResultadoSerializer(serializers.ModelSerializer):
             "respuestas",
         ]
     
-    # Guia Practica 5 Estructuras iterativas y diccionarios Actividad 2
+    #Guia #7 SUBALGORITMOS Y REFACTORIZACION FUNCIONAL Modularizacion del Core (Subalgorithms) Actividad 1
+    #Guia #6 ARRAYS Y MATRICES (ESTRUCTURAS MULTIDIMENSIONALES) Implementacion de Vectores en el Modelo de Negocio Actividad 1
+    #Guia #5 ESTRUCTURAS ITERATIVAS Y DICCIONARIOS Procesamiento iterativo de colecciones (Loops) Actividad 1
+    #Guia #2 SINTAXIS BASICA Y GESTION DE COLECCIONES Logica Aritmetica y Comparativa (Operators) Actividad 4
     def get_puntaje_total(self, obj):
         return sum(r.puntaje_obtenido for r in obj.respuestaprueba_set.all())

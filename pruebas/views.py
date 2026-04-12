@@ -20,13 +20,14 @@ from .serializers import (
 # =========================
 # PRUEBAS RECIENTES (DASHBOARD)
 # =========================
-# Guia Practica 6 Arrays y Matrices Actividad 1
 class PruebasRecientesView(APIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
 
+    #Guia #6 ARRAYS Y MATRICES (ESTRUCTURAS MULTIDIMENSIONALES) Implementacion de Vectores en el Modelo de Negocio Actividad 1
+    #Guia #6 ARRAYS Y MATRICES (ESTRUCTURAS MULTIDIMENSIONALES) Eficiencia y Validacion de la Estructura Actividad 3
+    #Guia #3 ESTRUCTURAS DE CONTROL LOGICO Y REGLAS DE NEGOCIO Debugging y Metodologias de Prueba del Flujo Logico Actividad 3
     def get(self, request, paciente_id=None):
-        # Guia Practica 3 Debugging y Metodologias de Prueba del Flujo Logico Actividad 3
         try:
             print(f"Usuario: {request.user}")
             print(f"Autenticado: {request.user.is_authenticated}")
@@ -50,6 +51,7 @@ class PruebasRecientesView(APIView):
 class PruebaDetalleView(APIView):
     permission_classes = [IsAuthenticated]
 
+    #Guia #3 ESTRUCTURAS DE CONTROL LOGICO Y REGLAS DE NEGOCIO Modelado de Reglas de Negocio Complejas (if / elif / else) Actividad 1
     def get(self, request, prueba_id):
         prueba = get_object_or_404(
             Prueba,
@@ -75,10 +77,17 @@ class PruebaDetalleView(APIView):
 # from .serializers import RegistroPruebaSerializer
 # from usuarios.models import Paciente
 
-# Guia Practica 5 Estructuras iterativas y diccionarios Actividad 2
 class RegistrarPruebaView(APIView):
     permission_classes = [IsAuthenticated]
 
+    #Guia #7 SUBALGORITMOS Y REFACTORIZACION FUNCIONAL Modularizacion del Core (Subalgorithms) Actividad 1
+    #Guia #6 ARRAYS Y MATRICES (ESTRUCTURAS MULTIDIMENSIONALES) Modelado de Datos Multidimensionales (Matrices) Actividad 2
+    #Guia #5 ESTRUCTURAS ITERATIVAS Y DICCIONARIOS Procesamiento iterativo de colecciones (Loops) Actividad 1
+    #Guia #5 ESTRUCTURAS ITERATIVAS Y DICCIONARIOS Estructuracion de datos con diccionarios (Dictionaries) Actividad 2
+    #Guia #4 ALGORITMOS DE INTERACCION E INPUT/OUTPUT Gestion de entrada dinamica (User Input) Actividad 1
+    #Guia #4 ALGORITMOS DE INTERACCION E INPUT/OUTPUT Consolidacion del Core funcional (Integracion 1-4) Actividad 3
+    #Guia #3 ESTRUCTURAS DE CONTROL LOGICO Y REGLAS DE NEGOCIO Implementacion de Logica Anidada y Operadores de Control Actividad 2
+    #Guia #2 SINTAXIS BASICA Y GESTION DE COLECCIONES Gestion de Cadenas y Colecciones (Strings & Lists) Actividad 3
     def post(self, request, prueba_id):
         serializer = RegistroPruebaSerializer(data=request.data)
 
@@ -114,7 +123,6 @@ class RegistrarPruebaView(APIView):
         # ── 4. Guardar respuestas ─────────────────────────────────────────────
         respuestas_creadas = []
         
-        # Guia Practica 5 Estructuras iterativas y diccionarios Actividad 1
         for r in data['respuestas']:
             pregunta = get_object_or_404(PreguntaPrueba, pk=r['pregunta_id'])
             opcion   = get_object_or_404(OpcionRespuesta, pk=r['opcion_seleccionada_id'])
@@ -139,12 +147,12 @@ class RegistrarPruebaView(APIView):
             "respuestas":   respuestas_creadas,
         }, status=201)
     
-# Guia Practica 6 Arrays y Matrices Actividad 1
 class ResultadosAdminView(APIView):
     permission_classes = [IsAuthenticated]
 
+    #Guia #6 ARRAYS Y MATRICES (ESTRUCTURAS MULTIDIMENSIONALES) Eficiencia y Validacion de la Estructura Actividad 3
+    #Guia #3 ESTRUCTURAS DE CONTROL LOGICO Y REGLAS DE NEGOCIO Debugging y Metodologias de Prueba del Flujo Logico Actividad 3
     def get(self, request):
-        # Guia Practica 3 Debugging y Metodologias de Prueba del Flujo Logico Actividad 3
         try:
             sesiones = (
                 SesionPrueba.objects

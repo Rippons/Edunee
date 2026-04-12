@@ -131,7 +131,6 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_CREDENTIALS = True
 
-# Guia Practica 2 Lists Construction Actividad 3
 CORS_ALLOW_HEADERS = [
     'authorization',
     'content-type',
