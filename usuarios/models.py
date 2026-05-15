@@ -2,7 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.hashers import make_password, check_password
 
-
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Modelado de Entidades (Classes & Attributes) Actividad 1
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Definicion de Comportamientos (Methods) Actividad 2
 class Administrador(AbstractUser):
     fecha_creacion = models.DateTimeField(auto_now_add=True)
 
@@ -14,6 +15,9 @@ class Administrador(AbstractUser):
 
 
 
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Modelado de Entidades (Classes & Attributes) Actividad 1
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Definicion de Comportamientos (Methods) Actividad 2
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Reingenieria del Sistema Actividad 3
 class Paciente(models.Model):
     paciente_id = models.AutoField(primary_key=True)
     nombres = models.CharField(max_length=100)
@@ -30,6 +34,8 @@ class Paciente(models.Model):
     def __str__(self):
         return f"{self.nombres} {self.apellidos}"
 
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Modelado de Entidades (Classes & Attributes) Actividad 1
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Definicion de Comportamientos (Methods) Actividad 2
 class PacienteUser(models.Model):
     """
     Credenciales de acceso para pacientes.

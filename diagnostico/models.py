@@ -3,6 +3,9 @@ from usuarios.models import Paciente
 from pruebas.models import SesionPrueba, CategoriaDaltonismo
 
 
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Modelado de Entidades (Classes & Attributes) Actividad 1
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Definicion de Comportamientos (Methods) Actividad 2
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Reingenieria del Sistema Actividad 3
 class ResultadoDiagnostico(models.Model):
     resultado_id = models.AutoField(primary_key=True)
 
@@ -36,6 +39,8 @@ class ResultadoDiagnostico(models.Model):
     def __str__(self):
         return f"Diagnóstico sesión {self.sesion_id}"
     
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Modelado de Entidades (Classes & Attributes) Actividad 1
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Definicion de Comportamientos (Methods) Actividad 2
 class RegistroDeteccionColor(models.Model):
     registro_id = models.AutoField(primary_key=True)
 
@@ -54,6 +59,8 @@ class RegistroDeteccionColor(models.Model):
     class Meta:
         db_table = 'registros_deteccion_color'
 
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Modelado de Entidades (Classes & Attributes) Actividad 1
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Definicion de Comportamientos (Methods) Actividad 2
 class MetricaRendimiento(models.Model):
     metrica_id = models.AutoField(primary_key=True)
 

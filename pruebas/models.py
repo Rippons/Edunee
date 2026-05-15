@@ -5,6 +5,8 @@ from usuarios.models import Administrador, Paciente
 # =========================
 # CATEGORÍAS
 # =========================
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Modelado de Entidades (Classes & Attributes) Actividad 1
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Definicion de Comportamientos (Methods) Actividad 2
 class CategoriaDaltonismo(models.Model):
     categoria_id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50, unique=True)
@@ -20,6 +22,9 @@ class CategoriaDaltonismo(models.Model):
 # =========================
 # PRUEBAS
 # =========================
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Modelado de Entidades (Classes & Attributes) Actividad 1
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Definicion de Comportamientos (Methods) Actividad 2
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Reingenieria del Sistema Actividad 3
 class Prueba(models.Model):
     prueba_id = models.AutoField(primary_key=True)
     nombre_prueba = models.CharField(max_length=100)
@@ -46,6 +51,8 @@ class Prueba(models.Model):
 # =========================
 # PREGUNTAS
 # =========================
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Modelado de Entidades (Classes & Attributes) Actividad 1
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Definicion de Comportamientos (Methods) Actividad 2
 class PreguntaPrueba(models.Model):
     pregunta_id = models.AutoField(primary_key=True)
 
@@ -78,6 +85,8 @@ class PreguntaPrueba(models.Model):
 # =========================
 # OPCIONES
 # =========================
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Modelado de Entidades (Classes & Attributes) Actividad 1
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Definicion de Comportamientos (Methods) Actividad 2
 class OpcionRespuesta(models.Model):
     opcion_id = models.AutoField(primary_key=True)
 
@@ -102,6 +111,9 @@ class OpcionRespuesta(models.Model):
 # =========================
 # SESIONES
 # =========================
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Modelado de Entidades (Classes & Attributes) Actividad 1
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Definicion de Comportamientos (Methods) Actividad 2
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Reingenieria del Sistema Actividad 3
 class SesionPrueba(models.Model):
     sesion_id = models.AutoField(primary_key=True)
 
@@ -131,6 +143,8 @@ class SesionPrueba(models.Model):
 # =========================
 # RESPUESTAS
 # =========================
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Modelado de Entidades (Classes & Attributes) Actividad 1
+#Guia #9 PROGRAMACION ORIENTADA A OBJETOS Definicion de Comportamientos (Methods) Actividad 2
 class RespuestaPrueba(models.Model):
     respuesta_id = models.AutoField(primary_key=True)
 
